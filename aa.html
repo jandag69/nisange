@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy on Click</title>
+    <style>
+        .highlight {
+            color: blue;
+            font-weight: bold;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        点击 
+        <span class="highlight" onclick="copyToClipboard('76jifen1@gmail.com')">76jifen1@gmail.com</span> 
+        复制.
+    </p>
+
+    <script>
+        function copyToClipboard(text) {
+            // Tạo một phần tử tạm thời để chứa nội dung cần sao chép
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+
+            // Chọn và sao chép nội dung
+            tempInput.select();
+            document.execCommand('copy');
+
+            // Xóa phần tử tạm thời
+            document.body.removeChild(tempInput);
+
+            // Hiển thị thông báo
+            alert('已复制: ' + text);
+        }
+    </script>
+</body>
+</html>
